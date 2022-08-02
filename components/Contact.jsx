@@ -16,6 +16,22 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (name === '') {
+      toast.error('Please enter your name');
+      return;
+    }
+    if (email === '') {
+      toast.error('Please enter your email');
+      return;
+    }
+    if (subject === '') {
+      toast.error('Please enter your subject');
+      return;
+    }
+    if (message === '') {
+      toast.error('Please enter your message');
+      return;
+    }
     firestore
       .collection('contacts')
       .add({
@@ -118,7 +134,7 @@ const Contact = () => {
                       type='text'
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      required
+                      maxLength={90}
                     />
                   </div>
                   <div className='flex flex-col'>
@@ -132,6 +148,7 @@ const Contact = () => {
                       placeholder='Format: 123-456-7890'
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
+                      maxLength={50}
                     />
                   </div>
                 </div>
@@ -142,6 +159,7 @@ const Contact = () => {
                     type='email'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    maxLength={90}
                   />
                 </div>
                 <div className='flex flex-col py-2'>
@@ -151,6 +169,7 @@ const Contact = () => {
                     type='text'
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
+                    maxLength={150}
                   />
                 </div>
                 <div className='flex flex-col py-2'>
@@ -160,6 +179,7 @@ const Contact = () => {
                     rows='10'
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
+                    maxLength={500}
                   ></textarea>
                 </div>
                 <button className='w-full p-4 text-gray-100 mt-4' type='submit'>
