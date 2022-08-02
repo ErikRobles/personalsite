@@ -63,7 +63,7 @@ const Contact = () => {
                 </picture>
               </div>
               <div>
-                <h2 className='py-2'>Name Here</h2>
+                <h2 className='py-2'>Erik Robles</h2>
                 <p>Front-End Web Developer</p>
                 <p className='py-4'>
                   I am available for large or small freelance website or
