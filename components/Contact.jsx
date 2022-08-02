@@ -14,7 +14,7 @@ const Contact = () => {
   const [message, setMessage] = useState('');
   const [phone, setPhone] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     firestore
       .collection('contacts')
