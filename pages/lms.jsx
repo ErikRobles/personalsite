@@ -28,8 +28,8 @@ const Lms = () => {
           <h2>Overview</h2>
           <p>
             This fully fledged web application was created to help teachers to
-            keep track of their students' attendance and evaluations. There are
-            Three authenticated area: 1. Teacher 2. Student 3. Admin. The
+            keep track of their student&apos;s attendance and evaluations. There
+            are Three authenticated area: 1. Teacher 2. Student 3. Admin. The
             application is built on the Laravel framework and utilizes the
             following technologies: PHP, Laravel, CSS3, MySQL, JavaScript.
           </p>

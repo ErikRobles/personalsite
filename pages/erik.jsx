@@ -30,10 +30,10 @@ const Erik = () => {
             This is a short description of the site you are looking at. It is an
             example of what can be done with Next.js and React. It uses Tailwind
             CSS and can be modified to suit any clients stylistic needs. For the
-            backend I decided to use Google's FireBase as the backend. This will
-            be an ongoing project where I will be adding new and more exciting
-            features as time goes on. The design of this site is based on the
-            work of Clint Briley who can be found on his{' '}
+            backend I decided to use Google&apos;s FireBase as the backend. This
+            will be an ongoing project where I will be adding new and more
+            exciting features as time goes on. The design of this site is based
+            on the work of Clint Briley who can be found on his{' '}
             <a
               href='https://www.instagram.com/fireclint/'
               target='_blank'
