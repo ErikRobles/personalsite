@@ -13,7 +13,6 @@ const Home = () => {
         <meta name='description' content='Next Port Portfolio Website' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-
       <Main />
       <About />
       <Skills />

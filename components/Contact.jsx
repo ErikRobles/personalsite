@@ -18,11 +18,17 @@ const Contact = () => {
           <div className='col-span-3 lg:col-span-2 w-full h-full shadow-xl shadow-gray-400 rounded-xl p-4'>
             <div className='lg:p-4 h-full'>
               <div>
-                <img
-                  className='rounded-xl hover:scale-105 md:hover:scale-[103%] ease-in duration-300'
-                  src='https://images.unsplash.com/photo-1516387938699-a93567ec168e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80'
-                  alt='hands on laptop'
-                />
+                <picture>
+                  <source
+                    srcSet='https://images.unsplash.com/photo-1516387938699-a93567ec168e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80'
+                    type='image/webp'
+                  />
+                  <img
+                    className='rounded-xl hover:scale-105 md:hover:scale-[103%] ease-in duration-300'
+                    src='https://images.unsplash.com/photo-1516387938699-a93567ec168e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80'
+                    alt='hands on laptop'
+                  />
+                </picture>
               </div>
               <div>
                 <h2 className='py-2'>Name Here</h2>
