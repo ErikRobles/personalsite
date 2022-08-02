@@ -9,8 +9,8 @@ const Home = () => {
   return (
     <div>
       <Head>
-        <title>ER Next Port | HOME</title>
-        <meta name='description' content='Next Port Portfolio Website' />
+        <title>Erik Robles Portfolio | HOME</title>
+        <meta name='description' content='Erik Robles Portfolio Website' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Main />
