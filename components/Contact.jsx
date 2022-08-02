@@ -43,16 +43,32 @@ const Contact = () => {
                 <p className='uppercase pt-8'>Connect With Me</p>
                 <div className='flex items-center justify-between py-4'>
                   <div className='rounded-full shadow-lg shadow-gray-400 text-[#5651e5] p-4 cursor-pointer hover:scale-110 ease-in duration-300'>
-                    <FaLinkedinIn size={25} />
+                    <a
+                      href='https://www.linkedin.com/in/erik-james-245067a8/'
+                      target='_blank'
+                      rel='noreferrer'
+                    >
+                      <FaLinkedinIn size={25} />
+                    </a>
                   </div>
                   <div className='rounded-full shadow-lg shadow-gray-400 text-[#5651e5] p-4 cursor-pointer hover:scale-110 ease-in duration-300'>
-                    <FaGithub size={25} />
+                    <a
+                      href='https://github.com/ErikRobles'
+                      target='_blank'
+                      rel='noreferrer'
+                    >
+                      <FaGithub size={25} />
+                    </a>
                   </div>
                   <div className='rounded-full shadow-lg shadow-gray-400 text-[#5651e5] p-4 cursor-pointer hover:scale-110 ease-in duration-300'>
-                    <AiOutlineMail size={25} />
+                    <a href='mailto:erobles@chainblocklabs.com'>
+                      <AiOutlineMail size={25} />
+                    </a>
                   </div>
                   <div className='rounded-full shadow-lg shadow-gray-400 text-[#5651e5] p-4 cursor-pointer hover:scale-110 ease-in duration-300'>
-                    <BsFillPersonLinesFill size={25} />
+                    <Link href='/#contact'>
+                      <BsFillPersonLinesFill size={25} />
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -99,7 +115,7 @@ const Contact = () => {
                     rows='10'
                   ></textarea>
                 </div>
-                <button className='w-full p-4 text-gray-100 mt-4'>
+                <button className='w-full p-4 text-gray-100 mt-4' type='submit'>
                   Send Message
                 </button>
               </form>

@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import corporateImg from '../public/assets/projects/corporate.png';
+import corporateImg from '../assets/projects/corporate.png';
 import { RiRadioButtonFill } from 'react-icons/ri';
 
 const Lionsfield = () => {

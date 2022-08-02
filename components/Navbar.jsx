@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import ERLogo from '../assets/navLogo.png';
 import Link from 'next/link';
 import { AiOutlineClose, AiOutlineMail, AiOutlineMenu } from 'react-icons/ai';
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
@@ -52,7 +53,7 @@ const Navbar = () => {
         <div className='flex justify-between items-center w-full h-full px-2 2xl:px-16'>
           <Link href='/'>
             <Image
-              src='/../public/assets/navLogo.png'
+              src={ERLogo}
               alt='Logo'
               width='125'
               height='50'
@@ -112,7 +113,7 @@ const Navbar = () => {
               <div className='flex w-full items-center justify-between'>
                 <Link href='/'>
                   <Image
-                    src='/../public/assets/navLogo.png'
+                    src={ERLogo}
                     alt='Logo'
                     width='87'
                     height='35'
@@ -165,16 +166,32 @@ const Navbar = () => {
                   </p>
                   <div className='flex items-center justify-between my-4 w-full sm:w-[80%]'>
                     <div className='rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300'>
-                      <FaLinkedinIn size={25} />
+                      <a
+                        href='https://www.linkedin.com/in/erik-james-245067a8/'
+                        target='_blank'
+                        rel='noreferrer'
+                      >
+                        <FaLinkedinIn size={25} />
+                      </a>
                     </div>
                     <div className='rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300'>
-                      <FaGithub size={25} />
+                      <a
+                        href='https://github.com/ErikRobles'
+                        target='_blank'
+                        rel='noreferrer'
+                      >
+                        <FaGithub size={25} />
+                      </a>
                     </div>
                     <div className='rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300'>
-                      <AiOutlineMail size={25} />
+                      <a href='mailto:erobles@chainblocklabs.com'>
+                        <AiOutlineMail size={25} />
+                      </a>
                     </div>
                     <div className='rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300'>
-                      <BsFillPersonLinesFill size={25} />
+                      <Link href='/#contact'>
+                        <BsFillPersonLinesFill size={25} />
+                      </Link>
                     </div>
                   </div>
                 </div>

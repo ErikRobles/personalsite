@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import logisticsImg from '../public/assets/projects/corporate2.png';
+import logisticsImg from '../assets/projects/corporate2.png';
 import { RiRadioButtonFill } from 'react-icons/ri';
 
 const Logistics = () => {

@@ -1,10 +1,10 @@
 import React from 'react';
-import lmsImg from '../public/assets/projects/lms.png';
-import cryptoAppImg from '../public/assets/projects/cryptoapp.png';
-import corp2Img from '../public/assets/projects/corporate2.png';
-import zitalkImg from '../public/assets/projects/zitalk.png';
-import corporateImg from '../public/assets/projects/corporate.png';
-import erikImg from '../public/assets/projects/erik.png';
+import lmsImg from '../assets/projects/lms.png';
+import cryptoAppImg from '../assets/projects/cryptoapp.png';
+import corp2Img from '../assets/projects/corporate2.png';
+import zitalkImg from '../assets/projects/zitalk.png';
+import corporateImg from '../assets/projects/corporate.png';
+import erikImg from '../assets/projects/erik.png';
 import ProjectItem from './ProjectItem';
 
 const Projects = () => {

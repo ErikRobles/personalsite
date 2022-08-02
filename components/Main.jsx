@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import { AiOutlineMail } from 'react-icons/ai';
 import { BsFillPersonLinesFill } from 'react-icons/bs';
@@ -21,16 +22,32 @@ const Main = () => {
           </p>
           <div className='flex items-center justify-between max-w-[330px] m-auto py-4'>
             <div className='rounded-full shadow-lg shadow-gray-400 text-[#5651e5] p-4 cursor-pointer hover:scale-110 ease-in duration-300'>
-              <FaLinkedinIn size={25} />
+              <a
+                href='https://www.linkedin.com/in/erik-james-245067a8/'
+                target='_blank'
+                rel='noreferrer'
+              >
+                <FaLinkedinIn size={25} />
+              </a>
             </div>
             <div className='rounded-full shadow-lg shadow-gray-400 text-[#5651e5] p-4 cursor-pointer hover:scale-110 ease-in duration-300'>
-              <FaGithub size={25} />
+              <a
+                href='https://github.com/ErikRobles'
+                target='_blank'
+                rel='noreferrer'
+              >
+                <FaGithub size={25} />
+              </a>
             </div>
             <div className='rounded-full shadow-lg shadow-gray-400 text-[#5651e5] p-4 cursor-pointer hover:scale-110 ease-in duration-300'>
-              <AiOutlineMail size={25} />
+              <a href='mailto:erobles@chainblocklabs.com'>
+                <AiOutlineMail size={25} />
+              </a>
             </div>
             <div className='rounded-full shadow-lg shadow-gray-400 text-[#5651e5] p-4 cursor-pointer hover:scale-110 ease-in duration-300'>
-              <BsFillPersonLinesFill size={25} />
+              <Link href='/#contact'>
+                <BsFillPersonLinesFill size={25} />
+              </Link>
             </div>
           </div>
         </div>

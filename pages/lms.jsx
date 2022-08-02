@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import lmsImg from '../public/assets/projects/lms.png';
+import lmsImg from '../assets/projects/lms.png';
 import { RiRadioButtonFill } from 'react-icons/ri';
 
 const Lms = () => {

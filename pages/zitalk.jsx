@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import zitalkImg from '../public/assets/projects/zitalk.png';
+import zitalkImg from '../assets/projects/zitalk.png';
 import { RiRadioButtonFill } from 'react-icons/ri';
 
 const Zitalk = () => {
