@@ -11,21 +11,20 @@ const About = () => {
           </p>
           <h2 className='py-4'>Who I Am</h2>
           <p className='py-2 text-gray-600'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero eaque,
-            earum dolorem at ducimus ex nesciunt dolore rerum quasi ea
-            accusantium cupiditate iusto! Laborum quaerat illo quibusdam, sit
-            totam non deleniti quos asperiores quis nobis modi nam expedita
-            quasi? Enim voluptatem nesciunt perspiciatis rerum a commodi placeat
-            asperiores deleniti modi!
+            One could say that I have always been into technology as early as my
+            high school days. I started my career as a teacher later in life and
+            it was from that where I began to look for technology to aid the
+            students on their learning journey. Not satisfied with the
+            technology that I found, I began to look for what was being used and
+            how I could improve it. It was then I began my path into PHP, Moodle
+            and WordPress. The further I went on my technological travels, I
+            began to see that JavaScript was going to be the language for me. I
+            was also introduced to the world of React.js and I was hooked. I can
+            say without a doubt that becoming a React and JavaScript developer
+            was the best choice I could have made. I am currently working on my
+            portfolio and I am looking forward to working with you.
           </p>
-          <p className='py-2 text-gray-600'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero eaque,
-            earum dolorem at ducimus ex nesciunt dolore rerum quasi ea
-            accusantium cupiditate iusto! Laborum quaerat illo quibusdam, sit
-            totam non deleniti quos asperiores quis nobis modi nam expedita
-            quasi? Enim voluptatem nesciunt perspiciatis rerum a commodi placeat
-            asperiores deleniti modi!
-          </p>
+
           <p className='py-2 text-gray-600 underline cursor-pointer'>
             Check out some of my latest projects.
           </p>
