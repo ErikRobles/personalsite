@@ -27,12 +27,11 @@ const Lms = () => {
           <p>Project</p>
           <h2>Overview</h2>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam ea
-            fugit consequuntur velit ullam aut, ipsum ab dolorem odio sequi est
-            earum molestiae. Dolore iure quos, at dolores est numquam suscipit
-            laudantium error sapiente, facilis quia perspiciatis aliquid enim
-            nostrum! Dicta officiis tempore dolor recusandae facilis hic!
-            Dignissimos, dolorem quo?
+            This fully fledged web application was created to help teachers to
+            keep track of their students' attendance and evaluations. There are
+            Three authenticated area: 1. Teacher 2. Student 3. Admin. The
+            application is built on the Laravel framework and utilizes the
+            following technologies: PHP, Laravel, CSS3, MySQL, JavaScript.
           </p>
           <button className='px-8 py-2 mt-4 mr-8'>
             <a

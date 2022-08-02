@@ -27,12 +27,10 @@ const Zitalk = () => {
           <p>Project</p>
           <h2>Overview</h2>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam ea
-            fugit consequuntur velit ullam aut, ipsum ab dolorem odio sequi est
-            earum molestiae. Dolore iure quos, at dolores est numquam suscipit
-            laudantium error sapiente, facilis quia perspiciatis aliquid enim
-            nostrum! Dicta officiis tempore dolor recusandae facilis hic!
-            Dignissimos, dolorem quo?
+            This company website is dedicated to helping people learn Spanish.
+            This is more of a landing page than a typical web site. However,
+            Since the site was built using Laravel and PHP, it has the potential
+            to be much more than a simple corporate website.
           </p>
           <button className='px-8 py-2 mt-4 mr-8 hover:scale-[103%]'>
             <a href='https://zitalk.com/' target='_blank' rel='noreferrer'>

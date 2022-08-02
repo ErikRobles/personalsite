@@ -27,12 +27,12 @@ const Crypto = () => {
           <p>Project</p>
           <h2>Overview</h2>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam ea
-            fugit consequuntur velit ullam aut, ipsum ab dolorem odio sequi est
-            earum molestiae. Dolore iure quos, at dolores est numquam suscipit
-            laudantium error sapiente, facilis quia perspiciatis aliquid enim
-            nostrum! Dicta officiis tempore dolor recusandae facilis hic!
-            Dignissimos, dolorem quo?
+            This web application was created to help people to fund their
+            dreams, emergencies, inventions etc. with cryptocurrency. It is
+            built on the Binance network and is a decentralized application.
+            Using Web3, Solidity and React along with MongoDB, it is a fully
+            functional application set to help millions of people around the
+            globe to fund their needs or dreams.
           </p>
           <button className='px-8 py-2 mt-4 mr-8 hover:scale-[103%]'>
             <a href='https://test.iwill.fund' target='_blank' rel='noreferrer'>

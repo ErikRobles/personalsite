@@ -27,12 +27,12 @@ const Lionsfield = () => {
           <p>Project</p>
           <h2>Overview</h2>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam ea
-            fugit consequuntur velit ullam aut, ipsum ab dolorem odio sequi est
-            earum molestiae. Dolore iure quos, at dolores est numquam suscipit
-            laudantium error sapiente, facilis quia perspiciatis aliquid enim
-            nostrum! Dicta officiis tempore dolor recusandae facilis hic!
-            Dignissimos, dolorem quo?
+            The Lionsfield Corporate School Website is actually a small scale
+            web application used to invite clients to know more about the school
+            and provide information to potential students. Built with Laravel
+            and PHP, the website is a great way to get more information about
+            the school and its services. The site is mobile friendly and is also
+            responsive.
           </p>
           <button className='px-8 py-2 mt-4 mr-8'>
             <a

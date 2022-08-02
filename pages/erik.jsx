@@ -18,7 +18,7 @@ const Erik = () => {
         />
         <div className='absolute top-[70%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] text-white z-10 p-2'>
           <h2 className='py-2'>Erik Robles Personal Website</h2>
-          <h3>React JS / TailWind / Next JS</h3>
+          <h3>React JS / TailWind / Next JS / Firebase</h3>
         </div>
       </div>
 
@@ -27,12 +27,31 @@ const Erik = () => {
           <p>Project</p>
           <h2>Overview</h2>
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam ea
-            fugit consequuntur velit ullam aut, ipsum ab dolorem odio sequi est
-            earum molestiae. Dolore iure quos, at dolores est numquam suscipit
-            laudantium error sapiente, facilis quia perspiciatis aliquid enim
-            nostrum! Dicta officiis tempore dolor recusandae facilis hic!
-            Dignissimos, dolorem quo?
+            This is a short description of the site you are looking at. It is an
+            example of what can be done with Next.js and React. It uses Tailwind
+            CSS and can be modified to suit any clients stylistic needs. For the
+            backend I decided to use Google's FireBase as the backend. This will
+            be an ongoing project where I will be adding new and more exciting
+            features as time goes on. The design of this site is based on the
+            work of Clint Briley who can be found on his{' '}
+            <a
+              href='https://www.instagram.com/fireclint/'
+              target='_blank'
+              rel='noreferrer'
+              className='underline text-[#5651e5]'
+            >
+              twitter
+            </a>
+            &nbsp;account and you can also find his work on his{' '}
+            <a
+              href='https://github.com/fireclint/portfolio-nextjs'
+              className='underline text-[#5651e5]'
+              target='_blank'
+              rel='noreferrer'
+            >
+              GitHub
+            </a>{' '}
+            page.
           </p>
           <button className='px-8 py-2 mt-4 mr-8 hover:scale-[103%]'>
             <a href='/' target='_blank' rel='noreferrer'>
@@ -54,6 +73,9 @@ const Erik = () => {
               </p>
               <p className='text-gray-600 py-2 flex items-center'>
                 <RiRadioButtonFill className='pr-1' /> Next JS
+              </p>
+              <p className='text-gray-600 py-2 flex items-center'>
+                <RiRadioButtonFill className='pr-1' /> Firebase
               </p>
             </div>
           </div>
