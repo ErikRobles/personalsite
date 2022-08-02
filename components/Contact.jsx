@@ -1,11 +1,43 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import { AiOutlineMail } from 'react-icons/ai';
 import { BsFillPersonLinesFill } from 'react-icons/bs';
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 import { HiOutlineChevronDoubleUp } from 'react-icons/hi';
+import { firestore } from '../utils/firebase';
+import { toast } from 'react-toastify';
 
 const Contact = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
+  const [phone, setPhone] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    firestore
+      .collection('contacts')
+      .add({
+        name,
+        email,
+        subject,
+        message,
+        phone,
+      })
+      .then(() => {
+        toast.success('Message sent successfully');
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+    setName('');
+    setEmail('');
+    setSubject('');
+    setMessage('');
+    setPhone('');
+  };
+
   return (
     <div id='contact' className='w-full lg:h-screen'>
       <div className='max-w-[1240] m-auto px-2 py-16 w-full'>
@@ -77,20 +109,29 @@ const Contact = () => {
           {/* right */}
           <div className='col-span-3 w-full h-auto shadow-xl shadow-gray-400 rounded-xl lg:p-4'>
             <div className='p-4'>
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className='grid md:grid-cols-2 gap-4 w-full py-2'>
                   <div className='flex flex-col'>
                     <label className='uppercase text-sm py-2'>Name</label>
                     <input
                       className='border-2 rounded-lg p-3 flex border-gray-300'
                       type='text'
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      required
                     />
                   </div>
                   <div className='flex flex-col'>
-                    <label className='uppercase text-sm py-2'>Phone</label>
+                    <label className='uppercase text-sm py-2'>
+                      Phone <small>(Optional)</small>
+                    </label>
                     <input
                       className='border-2 rounded-lg p-3 flex border-gray-300'
-                      type='text'
+                      type='tel'
+                      pattern='^[\+\(\s.\-\/\d\)]{5,30}$'
+                      placeholder='Format: 123-456-7890'
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
                     />
                   </div>
                 </div>
@@ -99,6 +140,8 @@ const Contact = () => {
                   <input
                     className='border-2 rounded-lg p-3 flex border-gray-300'
                     type='email'
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
                 <div className='flex flex-col py-2'>
@@ -106,6 +149,8 @@ const Contact = () => {
                   <input
                     className='border-2 rounded-lg p-3 flex border-gray-300'
                     type='text'
+                    value={subject}
+                    onChange={(e) => setSubject(e.target.value)}
                   />
                 </div>
                 <div className='flex flex-col py-2'>
@@ -113,6 +158,8 @@ const Contact = () => {
                   <textarea
                     className='border-2 rounded-lg p-3 border-gray-300'
                     rows='10'
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                   ></textarea>
                 </div>
                 <button className='w-full p-4 text-gray-100 mt-4' type='submit'>

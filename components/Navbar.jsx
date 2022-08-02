@@ -34,7 +34,7 @@ const Navbar = () => {
       }
     };
     window.addEventListener('scroll', handleShadow);
-  }, []);
+  }, [shadow]);
 
   const handleNav = () => {
     setNav(!nav);
