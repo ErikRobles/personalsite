@@ -9,7 +9,7 @@ const Main = () => {
     <div id='home' className='w-full h-screen text-center'>
       <div className='max-w-[1240] w-full h-full mx-auto p-2 flex justify-center items-center'>
         <div>
-          <p className='uppercase text-sm tracking-widest text-gray-600 mt-5'>
+          <p className='uppercase text-sm tracking-widest text-gray-600 mt-[4rem]'>
             LET&apos;S BUILD SOMETHING TOGETHER
           </p>
           <h1 className='py-4 text-gray-700'>
