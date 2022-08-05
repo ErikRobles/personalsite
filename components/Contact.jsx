@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import Link from 'next/link';
 import React, { useState, forwardRef } from 'react';
 import { AiOutlineMail } from 'react-icons/ai';
