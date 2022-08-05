@@ -40,6 +40,12 @@ const Navbar = () => {
     setNav(!nav);
   };
 
+  const CustomLinkWrapper = React.forwardRef((props, ref) => (
+    <a ref={ref} {...props}>
+      {props.children}
+    </a>
+  ));
+
   return (
     <>
       <nav
@@ -52,13 +58,15 @@ const Navbar = () => {
       >
         <div className='flex justify-between items-center w-full h-full px-2 2xl:px-16'>
           <Link href='/'>
-            <Image
-              src={ERLogo}
-              alt='Logo'
-              width='125'
-              height='50'
-              className='cursor-pointer'
-            />
+            <CustomLinkWrapper>
+              <Image
+                src={ERLogo}
+                alt='Logo'
+                width='125'
+                height='50'
+                className='cursor-pointer'
+              />
+            </CustomLinkWrapper>
           </Link>
           <div>
             <ul
@@ -112,13 +120,15 @@ const Navbar = () => {
             <div>
               <div className='flex w-full items-center justify-between'>
                 <Link href='/'>
-                  <Image
-                    src={ERLogo}
-                    alt='Logo'
-                    width='87'
-                    height='35'
-                    className='cursor-pointer'
-                  />
+                  <CustomLinkWrapper>
+                    <Image
+                      src={ERLogo}
+                      alt='Logo'
+                      width='87'
+                      height='35'
+                      className='cursor-pointer'
+                    />
+                  </CustomLinkWrapper>
                 </Link>
                 <div
                   className='rounded-full shadow-lg shadow-gray-400 cursor-pointer p-3'
@@ -190,7 +200,9 @@ const Navbar = () => {
                     </div>
                     <div className='rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300'>
                       <Link href='/#contact'>
-                        <BsFillPersonLinesFill size={25} />
+                        <CustomLinkWrapper>
+                          <BsFillPersonLinesFill size={25} />
+                        </CustomLinkWrapper>
                       </Link>
                     </div>
                   </div>

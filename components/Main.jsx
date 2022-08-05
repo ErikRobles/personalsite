@@ -5,6 +5,11 @@ import { BsFillPersonLinesFill } from 'react-icons/bs';
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 
 const Main = () => {
+  const CustomLinkWrapper = React.forwardRef((props, ref) => (
+    <a ref={ref} {...props}>
+      {props.children}
+    </a>
+  ));
   return (
     <div id='home' className='w-full h-screen text-center'>
       <div className='max-w-[1240] w-full h-full mx-auto p-2 flex justify-center items-center'>
@@ -46,7 +51,9 @@ const Main = () => {
             </div>
             <div className='rounded-full shadow-lg shadow-gray-400 text-[#5651e5] p-4 cursor-pointer hover:scale-110 ease-in duration-300'>
               <Link href='/#contact'>
-                <BsFillPersonLinesFill size={25} />
+                <CustomLinkWrapper>
+                  <BsFillPersonLinesFill size={25} />
+                </CustomLinkWrapper>
               </Link>
             </div>
           </div>

@@ -5,7 +5,7 @@ export const AuthService = {
   loginWithGoogle: async () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     try {
-      const { user } = await firebase.auth().signInWithPopup(provider);
+      const user = await firebase.auth().signInWithPopup(provider);
       return user;
     } catch (error) {
       return {

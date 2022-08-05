@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import { AiOutlineMail } from 'react-icons/ai';
 import { BsFillPersonLinesFill } from 'react-icons/bs';
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
@@ -53,6 +53,12 @@ const Contact = () => {
     setMessage('');
     setPhone('');
   };
+
+  const CustomLinkWrapper = forwardRef((props, ref) => (
+    <a ref={ref} {...props}>
+      {props.children}
+    </a>
+  ));
 
   return (
     <div id='contact' className='w-full lg:h-screen'>
@@ -115,7 +121,9 @@ const Contact = () => {
                   </div>
                   <div className='rounded-full shadow-lg shadow-gray-400 text-[#5651e5] p-4 cursor-pointer hover:scale-110 ease-in duration-300'>
                     <Link href='/#contact'>
-                      <BsFillPersonLinesFill size={25} />
+                      <CustomLinkWrapper>
+                        <BsFillPersonLinesFill size={25} />
+                      </CustomLinkWrapper>
                     </Link>
                   </div>
                 </div>
