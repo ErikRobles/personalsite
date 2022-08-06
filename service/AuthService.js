@@ -57,18 +57,14 @@ export const AuthService = {
         .auth()
         .sendPasswordResetEmail(email, { url: 'http://erikrobles.xyz/login' });
     } catch (error) {
-      return {
-        error: error.message,
-      };
+      return error.message;
     }
   },
   deleteAccount: async () => {
     try {
       await firebase.auth().currentUser.delete();
     } catch (error) {
-      return {
-        error: error.message,
-      };
+      return error.message;
     }
   },
   updatePassword: async (newPassword) => {
@@ -76,9 +72,7 @@ export const AuthService = {
       await firebase.auth().currentUser.updatePassword(newPassword);
       return toast.success('Password updated successfully');
     } catch (error) {
-      return {
-        error: error.message,
-      };
+      return error.message;
     }
   },
 };

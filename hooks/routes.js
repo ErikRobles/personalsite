@@ -22,7 +22,7 @@ export function withProtected(Component) {
   return function WithProtected(props) {
     const auth = useAuth();
     const router = useRouter();
-    if (!auth.user) {
+    if (!auth.user || !auth.user.emailVerified) {
       router.push('/login');
       return (
         <div className='grid h-screen place-items-center'>
