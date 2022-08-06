@@ -10,7 +10,10 @@ function SignUp() {
         <p className='text-xl tracking-widest uppercase text-[#5651e5]'>
           Sign Up
         </p>
-        <h2 className='py-4'>Sign Up Using Email and Password</h2>
+        <h2 className='py-4'>
+          Sign Up <br />
+          <small>Using Email and Password</small>
+        </h2>
         <div className='col-span-3 w-full h-auto shadow-xl shadow-gray-400 rounded-xl lg:p-4'>
           <div className='p-4'>
             <form>
