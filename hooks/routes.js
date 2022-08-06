@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import useAuth from './auth';
 
-export function withPublic(PublicComponent) {
+export function withPublic(Component) {
   return function WithPublic(props) {
     const auth = useAuth();
     const router = useRouter();
@@ -14,11 +14,11 @@ export function withPublic(PublicComponent) {
         </div>
       );
     }
-    return <PublicComponent auth={auth} {...props} />;
+    return <Component auth={auth} {...props} />;
   };
 }
 
-export function withProtected(ProtectedComponent) {
+export function withProtected(Component) {
   return function WithProtected(props) {
     const auth = useAuth();
     const router = useRouter();
@@ -30,6 +30,6 @@ export function withProtected(ProtectedComponent) {
         </div>
       );
     }
-    return <ProtectedComponent auth={auth} {...props} />;
+    return <Component auth={auth} {...props} />;
   };
 }
