@@ -11,11 +11,11 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <AuthProvider>
-        {/* <AuthStateChanged> */}
-        <Navbar />
-        <Component {...pageProps} />
-        <ToastContainer />
-        {/* </AuthStateChanged> */}
+        <AuthStateChanged>
+          <Navbar />
+          <Component {...pageProps} />
+          <ToastContainer />
+        </AuthStateChanged>
       </AuthProvider>
     </>
   );
