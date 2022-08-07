@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import React from 'react';
+import Spinner from '../components/Spinner';
 import useAuth from './auth';
 
 export function withPublic(Component) {
@@ -8,11 +9,7 @@ export function withPublic(Component) {
     const router = useRouter();
     if (auth.user) {
       router.push('/');
-      return (
-        <div className='grid h-screen place-items-center'>
-          <h1>Loading...</h1>
-        </div>
-      );
+      return <Spinner />;
     }
     return <Component auth={auth} {...props} />;
   };
@@ -24,11 +21,7 @@ export function withProtected(Component) {
     const router = useRouter();
     if (!auth.user || !auth.user.emailVerified) {
       router.push('/login');
-      return (
-        <div className='grid h-screen place-items-center'>
-          <h1>Loading...</h1>
-        </div>
-      );
+      return <Spinner />;
     }
     return <Component auth={auth} {...props} />;
   };

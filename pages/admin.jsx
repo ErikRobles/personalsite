@@ -14,6 +14,9 @@ function Admin({ auth }) {
   return (
     <div className='flex flex-col items-center my-30 p-3'>
       <h1 className='py-4 text-gray-600'>Admin</h1>
+      <p className='text-xl tracking-widest uppercase text-[#5651e5]'>
+        {user && user.email}
+      </p>
       <button
         className='btn btn-primary p-3 my-4 hover:scale-[103%] min-w-[153px]'
         onClick={logout}
@@ -28,6 +31,7 @@ function Admin({ auth }) {
           Delete Account
         </button>
       </div>
+
       <div className='max-w-[1240] m-auto px-2 py-16 w-full'>
         <p className='text-xl tracking-widest uppercase text-[#5651e5]'>
           Update

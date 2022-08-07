@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import useAuth from '../hooks/auth';
+import Spinner from '../components/Spinner';
 
 const AuthStateChanged = ({ children }) => {
   const { setUser } = useAuth();
@@ -17,11 +18,7 @@ const AuthStateChanged = ({ children }) => {
   }, []);
 
   if (loading) {
-    return (
-      <div className='grid h-screen place-items-center'>
-        <h1>Loading...</h1>
-      </div>
-    );
+    return <Spinner />;
   }
   return children;
 };
