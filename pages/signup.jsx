@@ -1,17 +1,30 @@
-import React, { useState, useRef } from 'react';
-import { withProtected } from '../hooks/routes';
+import React, { useState } from 'react';
+// import { withProtected } from '../hooks/routes';
+import { toast } from 'react-toastify';
+import { UserAuth } from '../context/AuthContext';
+import { useRouter } from 'next/router';
 
-function SignUp({ auth }) {
-  const { createUserWithEmailAndPassword, error } = auth;
-  //   const [email, setEmail] = useState('');
-  //   const [password, setPassword] = useState('');
-  const email = useRef();
-  const password = useRef();
+function SignUp() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-  const handleSignUp = (e) => {
+  const { createUser } = UserAuth();
+
+  const router = useRouter();
+
+  const handleSignUp = async (e) => {
     e.preventDefault();
-    console.log(email.current.value, password.current.value);
-    createUserWithEmailAndPassword(email.current.value, password.current.value);
+
+    try {
+      await createUser(email, password);
+      setError('');
+      toast.success('User created successfully');
+      router.push('/');
+    } catch (error) {
+      setError(error.message);
+      toast.error(error.message);
+    }
   };
 
   return (
@@ -33,7 +46,7 @@ function SignUp({ auth }) {
                   <input
                     className='border-2 rounded-lg p-3 flex border-gray-300'
                     type='email'
-                    ref={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     maxLength={90}
                   />
                 </div>
@@ -42,7 +55,7 @@ function SignUp({ auth }) {
                   <input
                     className='border-2 rounded-lg p-3 flex border-gray-300'
                     type='password'
-                    ref={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     maxLength={90}
                   />
                 </div>
@@ -58,10 +71,8 @@ function SignUp({ auth }) {
           </div>
         </div>
       </div>
-      {/* </div>
-      </div> */}
     </div>
   );
 }
 
-export default withProtected(SignUp);
+export default SignUp;

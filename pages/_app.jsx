@@ -3,20 +3,16 @@ import Navbar from '../components/Navbar';
 // import type { AppProps } from 'next/app';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { AuthProvider } from '../hooks/auth';
-import { firestore } from '../utils/firebase';
-import AuthStateChanged from '../layouts/AuthStateChanged';
+import { AuthContextProvider } from '../context/AuthContext';
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <AuthProvider>
-        <AuthStateChanged>
-          <Navbar />
-          <Component {...pageProps} />
-          <ToastContainer />
-        </AuthStateChanged>
-      </AuthProvider>
+      <AuthContextProvider>
+        <Navbar />
+        <Component {...pageProps} />
+        <ToastContainer />
+      </AuthContextProvider>
     </>
   );
 }

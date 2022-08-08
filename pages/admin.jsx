@@ -1,25 +1,49 @@
-import React, { useRef } from 'react';
-import { withProtected } from '../hooks/routes';
+import React, { useState, useRef } from 'react';
+import { UserAuth } from '../context/AuthContext';
+import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
+import Cookies from 'js-cookie';
 
-function Admin({ auth }) {
-  const { logout, user, deleteAccount, updatePassword } = auth;
-  const confirmPassword = useRef();
-  const password = useRef();
+function Admin() {
+  const { user, logout, deleteAccount, changePassword } = UserAuth();
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  // const { password } = useRef(null);
+  // const { confirmPassword } = useRef(null);
 
-  const handleUpdatePassword = async (e) => {
+  const router = useRouter();
+
+  const handleUpdatePassword = (e) => {
     e.preventDefault();
-    await updatePassword(confirmPassword.current.value, password.current.value);
+    if (password !== confirmPassword) {
+      toast.error('Passwords do not match');
+      return;
+    } else {
+      changePassword(password);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      Cookies.remove('loggedIn');
+      toast.success('Logout Successful');
+      router.push('/');
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   return (
     <div className='flex flex-col items-center my-30 p-3'>
       <h1 className='py-4 text-gray-600'>Admin</h1>
       <p className='text-xl tracking-widest uppercase text-[#5651e5]'>
+        <strong>User Email: </strong>
         {user && user.email}
       </p>
       <button
         className='btn btn-primary p-3 my-4 hover:scale-[103%] min-w-[153px]'
-        onClick={logout}
+        onClick={handleLogout}
       >
         Logout
       </button>
@@ -48,18 +72,20 @@ function Admin({ auth }) {
                   <input
                     className='border-2 rounded-lg p-3 flex border-gray-300'
                     type='password'
-                    ref={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    // ref={password}
                     maxLength={90}
                   />
                 </div>
-                <div className='flex flex-col py-2'>
+                <div className='flex flex-col '>
                   <label className='uppercase text-sm py-2'>
                     Confirm Password
                   </label>
                   <input
                     className='border-2 rounded-lg p-3 flex border-gray-300'
                     type='password'
-                    ref={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    // ref={confirmPassword}
                     maxLength={90}
                   />
                 </div>
@@ -79,4 +105,4 @@ function Admin({ auth }) {
   );
 }
 
-export default withProtected(Admin);
+export default Admin;

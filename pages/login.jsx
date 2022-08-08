@@ -1,18 +1,31 @@
-import React, { useRef } from 'react';
-import { withPublic } from '../hooks/routes';
+import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { UserAuth } from '../context/AuthContext';
+import { toast } from 'react-toastify';
+import Cookies from 'js-cookie';
 
-function Login({ auth }) {
-  const { signInUserWithEmailAndPassword, resetPassword, error } = auth;
-  const email = useRef();
-  const password = useRef();
+function Login() {
+  const { resetPassword } = UserAuth();
+
+  const router = useRouter();
+  const { signIn } = UserAuth();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSignIn = async (e) => {
     e.preventDefault();
-    await signInUserWithEmailAndPassword(
-      email.current.value,
-      password.current.value
-    );
+    try {
+      await signIn(email, password);
+      setError('');
+      Cookies.set('loggedIn', true);
+      toast.success('User signed in successfully');
+      router.push('/admin');
+    } catch (error) {
+      setError(error.message);
+      toast.error(error.message);
+    }
   };
 
   return (
@@ -38,7 +51,7 @@ function Login({ auth }) {
                     <input
                       className='border-2 rounded-lg p-3 flex border-gray-300'
                       type='email'
-                      ref={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       maxLength={90}
                     />
                   </div>
@@ -47,7 +60,7 @@ function Login({ auth }) {
                     <input
                       className='border-2 rounded-lg p-3 flex border-gray-300'
                       type='password'
-                      ref={password}
+                      onChange={(e) => setPassword(e.target.value)}
                       maxLength={90}
                     />
                   </div>
@@ -63,10 +76,7 @@ function Login({ auth }) {
             </div>
           </div>
           <div className='mt-[40px] cursor-pointer'>
-            <a
-              className='underline'
-              onClick={async () => resetPassword(email.current.value)}
-            >
+            <a className='underline' onClick={async () => resetPassword(email)}>
               Forgot Password?
             </a>
           </div>
@@ -76,4 +86,4 @@ function Login({ auth }) {
   );
 }
 
-export default withPublic(Login);
+export default Login;
