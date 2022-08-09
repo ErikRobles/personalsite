@@ -7,14 +7,30 @@ import { AiOutlineClose, AiOutlineMail, AiOutlineMenu } from 'react-icons/ai';
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 import { BsFillPersonLinesFill } from 'react-icons/bs';
 import { useRouter } from 'next/router';
+import { UserAuth } from '../context/AuthContext';
+import { FiChevronDown } from 'react-icons/fi';
+// import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 const Navbar = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+  const { user } = UserAuth();
   const [nav, setNav] = useState(false);
   const [shadow, setShadow] = useState(false);
   const [navBg, setNavBg] = useState('#ecf0f3');
   const [linkColor, setLinkColor] = useState('#1f2937');
 
   const router = useRouter();
+
+  // const auth = getAuth();
+
+  // onAuthStateChanged(auth, (user) => {
+  //   if (user) {
+  //     setLoggedIn(true);
+  //     const uid = user.uid;
+  //   } else {
+  //     setLoggedIn(false);
+  //   }
+  // });
 
   useEffect(() => {
     if (router.asPath === '/property') {
@@ -69,6 +85,7 @@ const Navbar = () => {
               />
             </CustomLinkWrapper>
           </Link>
+
           <div>
             <ul
               style={{ color: `${linkColor}` }}
@@ -97,9 +114,26 @@ const Navbar = () => {
                   Contact
                 </li>
               </Link>
+              {user ? (
+                <Link href='/admin' className='block'>
+                  <li className='ml-10 text-sm uppercase hover:border-b'>
+                    Admin
+                  </li>
+                </Link>
+              ) : (
+                <Link href='/login'>
+                  <li className='ml-10 text-sm uppercase hover:border-b'>
+                    Login
+                  </li>
+                </Link>
+              )}
             </ul>
             <div className='md:hidden mr-3' onClick={handleNav}>
-              <AiOutlineMenu size={25} fill={linkColor} />
+              <AiOutlineMenu
+                size={25}
+                fill={linkColor}
+                className='cursor-pointer'
+              />
             </div>
           </div>
         </div>
@@ -170,6 +204,25 @@ const Navbar = () => {
                       Contact
                     </li>
                   </Link>
+                  {user ? (
+                    <Link href='/admin'>
+                      <li
+                        onClick={() => setNav(false)}
+                        className='py-4 text-sm'
+                      >
+                        Admin
+                      </li>
+                    </Link>
+                  ) : (
+                    <Link href='/login'>
+                      <li
+                        onClick={() => setNav(false)}
+                        className='py-4 text-sm'
+                      >
+                        Login
+                      </li>
+                    </Link>
+                  )}
                 </ul>
                 <div className='pt-40'>
                   <p className='uppercase tracking-widest text-[#5651e5]'>
