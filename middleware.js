@@ -7,6 +7,9 @@ export default function middleware(req) {
   if (!verify && url.includes('/admin')) {
     return NextResponse.redirect('https://erikrobles.xyz/login');
   }
+  if (!verify && url.includes('/signup')) {
+    return NextResponse.redirect('https://erikrobles.xyz/login');
+  }
   if (verify && url.includes('/login')) {
     return NextResponse.redirect('https://erikrobles.xyz/admin');
   }

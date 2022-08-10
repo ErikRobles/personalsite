@@ -23,6 +23,8 @@ export const AuthContextProvider = ({ children }) => {
 
   const router = useRouter();
 
+  console.log(user.cred);
+
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
