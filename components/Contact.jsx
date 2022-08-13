@@ -7,6 +7,9 @@ import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 import { HiOutlineChevronDoubleUp } from 'react-icons/hi';
 import { firestore } from '../utils/firebase';
 import { toast } from 'react-toastify';
+import { db } from '../utils/firebase';
+import { addDoc, collection } from 'firebase/firestore';
+import { useRouter } from 'next/router';
 
 const Contact = () => {
   const [name, setName] = useState('');
@@ -14,6 +17,10 @@ const Contact = () => {
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
   const [phone, setPhone] = useState('');
+
+  const contactCollectionRef = collection(db, 'contacts');
+
+  const router = useRouter();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,21 +40,31 @@ const Contact = () => {
       toast.error('Please enter your message');
       return;
     }
-    firestore
-      .collection('contacts')
-      .add({
-        name,
-        email,
-        subject,
-        message,
-        phone,
-      })
-      .then(() => {
-        toast.success('Message sent successfully');
-      })
-      .catch((error) => {
-        toast.error(error.message);
-      });
+    // firestore
+    //   .collection('contacts')
+    //   .add({
+    //     name,
+    //     email,
+    //     subject,
+    //     message,
+    //     phone,
+    //   })
+    //   .then(() => {
+    //     toast.success('Message sent successfully');
+    //   })
+    //   .catch((error) => {
+    //     toast.error(error.message);
+    //   });
+    addDoc(contactCollectionRef, {
+      name,
+      email,
+      subject,
+      message,
+      phone,
+    }).then(() => {
+      toast.success('Message sent successfully');
+      router.push('/');
+    });
     setName('');
     setEmail('');
     setSubject('');

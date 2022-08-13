@@ -1,15 +1,31 @@
 import React, { useState } from 'react';
-// import { withProtected } from '../hooks/routes';
 import { toast } from 'react-toastify';
-import { UserAuth } from '../context/AuthContext';
 import { useRouter } from 'next/router';
+import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from 'firebase/auth';
+import { db } from '../utils/firebase';
 
 function SignUp() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [formData, setFormData] = useState({
+    userName: '',
+    email: '',
+    password: '',
+  });
+  const { userName, email, password } = formData;
 
-  const { createUser } = UserAuth();
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.value,
+    }));
+  };
+
+  // const { createUser } = UserAuth();
 
   const router = useRouter();
 
@@ -17,10 +33,22 @@ function SignUp() {
     e.preventDefault();
 
     try {
-      await createUser(email, password);
-      setError('');
-      toast.success('User created successfully');
-      router.push('/');
+      const auth = getAuth();
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      await updateProfile(auth.currentUser, {
+        displayName: userName,
+      });
+      const formDataCopy = { ...formData };
+      delete formDataCopy.password;
+      formDataCopy.timestamp = serverTimestamp();
+      await setDoc(doc(db, 'users', user.uid), formDataCopy);
+      toast.success('Account created successfully');
+      router.push('/admin');
     } catch (error) {
       setError(error.message);
       toast.error(error.message);
@@ -42,11 +70,24 @@ function SignUp() {
             <form onSubmit={handleSignUp}>
               <div className='grid md:grid-cols-2 gap-4 w-full py-2'>
                 <div className='flex flex-col'>
+                  <label className='uppercase text-sm py-2'>User Name</label>
+                  <input
+                    className='border-2 rounded-lg p-3 flex border-gray-300'
+                    type='text'
+                    id='userName'
+                    value={userName}
+                    onChange={onChange}
+                    maxLength={90}
+                  />
+                </div>
+                <div className='flex flex-col'>
                   <label className='uppercase text-sm py-2'>Email</label>
                   <input
                     className='border-2 rounded-lg p-3 flex border-gray-300'
                     type='email'
-                    onChange={(e) => setEmail(e.target.value)}
+                    id='email'
+                    value={email}
+                    onChange={onChange}
                     maxLength={90}
                   />
                 </div>
@@ -55,7 +96,9 @@ function SignUp() {
                   <input
                     className='border-2 rounded-lg p-3 flex border-gray-300'
                     type='password'
-                    onChange={(e) => setPassword(e.target.value)}
+                    id='password'
+                    value={password}
+                    onChange={onChange}
                     maxLength={90}
                   />
                 </div>

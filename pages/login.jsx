@@ -4,9 +4,11 @@ import { useRouter } from 'next/router';
 import { UserAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import Cookies from 'js-cookie';
+import { BiShow } from 'react-icons/bi';
 
 function Login() {
   const { resetPassword } = UserAuth();
+  const [showPassword, setShowPassword] = useState(false);
 
   const router = useRouter();
   const { signIn } = UserAuth();
@@ -56,10 +58,18 @@ function Login() {
                     />
                   </div>
                   <div className='flex flex-col py-2'>
-                    <label className='uppercase text-sm py-2'>Password</label>
+                    <label className='uppercase text-sm py-2 relative'>
+                      Password{' '}
+                      <BiShow
+                        className='absolute right-5 top-12 mt-1 cursor-pointer'
+                        onClick={() =>
+                          setShowPassword((prevState) => !prevState)
+                        }
+                      />
+                    </label>
                     <input
-                      className='border-2 rounded-lg p-3 flex border-gray-300'
-                      type='password'
+                      className='border-2 rounded-lg p-3 flex border-gray-300 '
+                      type={showPassword ? 'text' : 'password'}
                       onChange={(e) => setPassword(e.target.value)}
                       maxLength={90}
                     />

@@ -44,6 +44,10 @@ function Admin() {
         <strong>User Email: </strong>
         {user && user.email}
       </p>
+      <p className='text-xl tracking-widest uppercase text-[#5651e5] text-center'>
+        <strong>User Name: </strong>
+        {user.displayName && user.displayName}
+      </p>
       <button
         className='btn btn-primary p-3 my-4 hover:scale-[103%] min-w-[153px]'
         onClick={handleLogout}

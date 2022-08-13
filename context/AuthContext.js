@@ -8,14 +8,16 @@ import {
   getAuth,
   deleteUser,
   updatePassword,
+  updateProfile,
 } from 'firebase/auth';
 import { auth } from '../utils/firebase';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
+import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
 
 const UserContext = createContext();
 
-const user = auth.currentUser;
+// const user = auth.currentUser;
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
@@ -23,10 +25,27 @@ export const AuthContextProvider = ({ children }) => {
 
   const router = useRouter();
 
-  console.log(user.cred);
-
-  const createUser = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password);
+  const createUser = async (userName, email, password) => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      await updateProfile(auth.currentUser, {
+        displayName: userName,
+      });
+      const formDataCopy = { ...formData };
+      delete formDataCopy.password;
+      formDataCopy.timestamp = serverTimestamp();
+      await setDoc(doc(db, 'users', user.uid), formDataCopy);
+      toast.success('Account created successfully');
+      router.push('/admin');
+    } catch (error) {
+      setError(error.message);
+      toast.error(error.message);
+    }
   };
 
   const signIn = (email, password) => {
