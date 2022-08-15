@@ -4,16 +4,23 @@ export default function middleware(req) {
   let verify = req.cookies.get('loggedIn');
   let url = req.url;
 
+  // if (!verify && url.includes('/admin')) {
+  //   return NextResponse.redirect('http://localhost:3000/login');
+  // }
+  // if (!verify && url.includes('/signup')) {
+  //   return NextResponse.redirect('http://localhost:3000/login');
+  // }
+  // if (verify && url.includes('/login')) {
+  //   return NextResponse.redirect('http://localhost:3000/admin');
+  // }
+
   if (!verify && url.includes('/admin')) {
     return NextResponse.redirect('https://erikrobles.xyz/login');
-    // return NextResponse.redirect('http://localhost:3000/login');
   }
   if (!verify && url.includes('/signup')) {
     return NextResponse.redirect('https://erikrobles.xyz/login');
-    // return NextResponse.redirect('http://localhost:3000/login');
   }
   if (verify && url.includes('/login')) {
     return NextResponse.redirect('https://erikrobles.xyz/admin');
-    // return NextResponse.redirect('http://localhost:3000/admin');
   }
 }

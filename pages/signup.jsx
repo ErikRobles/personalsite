@@ -15,8 +15,9 @@ function SignUp() {
     userName: '',
     email: '',
     password: '',
+    role: 'user',
   });
-  const { userName, email, password } = formData;
+  const { userName, email, password, role } = formData;
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -25,13 +26,10 @@ function SignUp() {
     }));
   };
 
-  // const { createUser } = UserAuth();
-
   const router = useRouter();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-
     try {
       const auth = getAuth();
       const userCredential = await createUserWithEmailAndPassword(
@@ -101,6 +99,18 @@ function SignUp() {
                     onChange={onChange}
                     maxLength={90}
                   />
+                </div>
+                <div className='flex flex-col py-2'>
+                  <label className='uppercase text-sm py-2'>User Role</label>
+                  <select
+                    id='role'
+                    className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#5b4fe5] focus:border-[#5b4fe5] block w-full p-3.5'
+                    value={role}
+                    onChange={onChange}
+                  >
+                    <option value='user'>User</option>
+                    <option value='admin'>Admin</option>
+                  </select>
                 </div>
               </div>
 

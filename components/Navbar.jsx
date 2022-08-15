@@ -8,12 +8,12 @@ import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 import { BsFillPersonLinesFill } from 'react-icons/bs';
 import { useRouter } from 'next/router';
 import { UserAuth } from '../context/AuthContext';
-import { FiChevronDown } from 'react-icons/fi';
 // import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 
 const Navbar = () => {
   const [loggedIn, setLoggedIn] = useState(false);
-  const { user } = UserAuth();
+  // const { user } = UserAuth();
   const [nav, setNav] = useState(false);
   const [shadow, setShadow] = useState(false);
   const [navBg, setNavBg] = useState('#ecf0f3');
@@ -21,7 +21,9 @@ const Navbar = () => {
 
   const router = useRouter();
 
-  // const auth = getAuth();
+  const auth = getAuth();
+
+  const user = auth.currentUser;
 
   // onAuthStateChanged(auth, (user) => {
   //   if (user) {

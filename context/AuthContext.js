@@ -1,52 +1,41 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import {
-  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
   sendPasswordResetEmail,
-  getAuth,
   deleteUser,
   updatePassword,
-  updateProfile,
 } from 'firebase/auth';
 import { auth } from '../utils/firebase';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
-import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  onSnapshot,
+  query,
+  where,
+} from 'firebase/firestore';
+import { db } from '../utils/firebase';
 
 const UserContext = createContext();
 
-// const user = auth.currentUser;
+const user = auth.currentUser;
+
+const PROFILE_COLLECTION = 'users'; // name of the FS collection of user profile docs
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const [error, setError] = useState('');
+  const [profile, setProfile] = useState(null);
+  const [authLoading, setAuthLoading] = useState(true);
+  const [authErrorMessage, setAuthErrorMessage] = useState();
 
   const router = useRouter();
-
-  const createUser = async (userName, email, password) => {
-    try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const user = userCredential.user;
-      await updateProfile(auth.currentUser, {
-        displayName: userName,
-      });
-      const formDataCopy = { ...formData };
-      delete formDataCopy.password;
-      formDataCopy.timestamp = serverTimestamp();
-      await setDoc(doc(db, 'users', user.uid), formDataCopy);
-      toast.success('Account created successfully');
-      router.push('/admin');
-    } catch (error) {
-      setError(error.message);
-      toast.error(error.message);
-    }
-  };
 
   const signIn = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
@@ -94,6 +83,41 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    let unsubscribe = null;
+    const listenToUserDoc = async (uid) => {
+      try {
+        let docRef = doc(db, PROFILE_COLLECTION, uid);
+        unsubscribe = await onSnapshot(docRef, (docSnap) => {
+          let profileData = docSnap.data();
+          console.log('Got user profile:', profileData);
+          if (!profileData) {
+            setAuthErrorMessage(
+              `No profile doc found in Firestore at: ${docRef.path}`
+            );
+          }
+          setAuthLoading(true);
+          setProfile(profileData);
+          setAuthLoading(false);
+        });
+      } catch (ex) {
+        console.error(`useEffect() failed with: ${ex.message}`);
+        setAuthErrorMessage(ex.message);
+      }
+    };
+    if (user?.uid) {
+      listenToUserDoc(user.uid);
+
+      return () => {
+        unsubscribe && unsubscribe();
+      };
+    } else if (!user) {
+      setAuthLoading(true);
+      setProfile(null);
+      setAuthErrorMessage(null);
+    }
+  }, [user, setProfile, db]);
+
+  useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log(currentUser);
       setUser(currentUser);
@@ -106,7 +130,9 @@ export const AuthContextProvider = ({ children }) => {
   return (
     <UserContext.Provider
       value={{
-        createUser,
+        profile,
+        authErrorMessage,
+        authLoading,
         user,
         logout,
         signIn,
