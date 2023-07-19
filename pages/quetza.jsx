@@ -1,18 +1,18 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import corporateImg from '../assets/projects/corporate.png';
+import quetzaImg from '../assets/projects/quetza.png';
 import { RiRadioButtonFill } from 'react-icons/ri';
 import Head from 'next/head';
 
-const Lionsfield = () => {
+const Quetza = () => {
   return (
     <>
       <Head>
-        <title>ER Portfolio | Lionsfield Corporate Project</title>
+        <title>ER Portfolio | Quetza Project</title>
         <meta
           name='description'
-          content='Laravel, PHP, Javascript, Bootstrap Corporate website for providing information about the company to the students and companies throughout Mexico.'
+          content='E-commerce Website for selling custom activeware with Mexican Themes.'
         />
         <link rel='icon' href='/favicon.ico' />
       </Head>
@@ -23,12 +23,12 @@ const Lionsfield = () => {
             className='absolute z-1'
             layout='fill'
             objectFit='cover'
-            src={corporateImg}
-            alt='School Corporate Website'
+            src={quetzaImg}
+            alt='/'
           />
           <div className='absolute top-[70%] max-w-[1240px] w-full left-[50%] right-[50%] translate-x-[-50%] translate-y-[-50%] text-white z-10 p-3'>
-            <h2 className='py-2'>School Corporate Website</h2>
-            <h3>PHP / Laravel / CSS3 / MySQL / JavaScript</h3>
+            <h2 className='py-2'>Quetza E-commerce Website</h2>
+            <h3>WordPress / JavaScript / CSS</h3>
           </div>
         </div>
 
@@ -37,16 +37,11 @@ const Lionsfield = () => {
             <p>Project</p>
             <h2>Overview</h2>
             <p>
-              The Lionsfield Corporate School Website is actually a small scale
-              web application used to invite clients to know more about the
-              school and provide information to potential students. Built with
-              Laravel and PHP, the website is a great way to get more
-              information about the school and its services. The site is mobile
-              friendly and is also responsive.
+              This website was built as an e-commerce platform. The site is mobile friendly and is also responsive.
             </p>
-            <button className='px-8 py-2 mt-4 mr-8'>
+            <button className='px-8 py-2 mt-4 mr-8 hover:scale-[103%]'>
               <a
-                href='http://lionsfield.com/'
+                href='https://quetz4.com/us'
                 target='_blank'
                 rel='noreferrer'
               >
@@ -61,13 +56,10 @@ const Lionsfield = () => {
 
               <div className='grid grid-cols-3 md:grid-cols-1 text-xs sm:text-base'>
                 <p className='text-gray-600 py-2 flex items-center'>
-                  <RiRadioButtonFill className='pr-1' /> PHP
+                  <RiRadioButtonFill className='pr-1' /> WordPress
                 </p>
                 <p className='text-gray-600 py-2 flex items-center'>
-                  <RiRadioButtonFill className='pr-1' /> CSS3
-                </p>
-                <p className='text-gray-600 py-2 flex items-center'>
-                  <RiRadioButtonFill className='pr-1' /> MySQL
+                  <RiRadioButtonFill className='pr-1' /> CSS
                 </p>
                 <p className='text-gray-600 py-2 flex items-center'>
                   <RiRadioButtonFill className='pr-1' /> JavaScript
@@ -87,4 +79,4 @@ const Lionsfield = () => {
   );
 };
 
-export default Lionsfield;
+export default Quetza;

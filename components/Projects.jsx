@@ -3,6 +3,9 @@ import lmsImg from '../assets/projects/lms.png';
 import cryptoAppImg from '../assets/projects/cryptoapp.png';
 import corp2Img from '../assets/projects/corporate2.png';
 import zitalkImg from '../assets/projects/zitalk.png';
+import radgarackImg from '../assets/projects/radgnarackHome.png';
+import naplesdentalImg from '../assets/projects/naplesdental.png';
+import quetzaImg from '../assets/projects/quetza.png';
 import corporateImg from '../assets/projects/corporate.png';
 import erikImg from '../assets/projects/erik.png';
 import ProjectItem from './ProjectItem';
@@ -16,28 +19,28 @@ const Projects = () => {
         </p>
         <h2 className='py-4'>Project Highlights</h2>
         <div className='grid md:grid-cols-2 gap-8'>
-          <ProjectItem
-            title='Funding Application'
-            backgroundImg={cryptoAppImg}
-            projectUrl='/crypto'
-            tech='React JS'
+        <ProjectItem
+            title='Radgnarack Corporate Website'
+            backgroundImg={radgarackImg}
+            projectUrl='/radgnarack'
+            tech='JavaScript'
           />
           <ProjectItem
-            title='LMS School Mgmt App'
-            backgroundImg={lmsImg}
-            projectUrl='/lms'
-            tech='PHP'
-          />
-          <ProjectItem
-            title='SecureCourier Shipping & Logistics Site'
-            backgroundImg={corp2Img}
-            projectUrl='/logistics'
-            tech='PHP'
+            title='Quetza E-commerce Website'
+            backgroundImg={quetzaImg}
+            projectUrl='/quetza'
+            tech='WordPress'
           />
           <ProjectItem
             title='Zitalk Spanish Learning Website'
             backgroundImg={zitalkImg}
             projectUrl='/zitalk'
+            tech='PHP'
+          />
+          <ProjectItem
+            title="Naples Dental Customer Website"
+            backgroundImg={naplesdentalImg}
+            projectUrl='/naplesdental'
             tech='PHP'
           />
           <ProjectItem

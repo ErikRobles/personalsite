@@ -46,7 +46,7 @@ const Lms = () => {
             </p>
             <button className='px-8 py-2 mt-4 mr-8'>
               <a
-                href='http://lionsfield.com.mx/'
+                href='http://lionsfield.com/'
                 target='_blank'
                 rel='noreferrer'
               >
