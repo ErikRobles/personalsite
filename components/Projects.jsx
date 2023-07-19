@@ -1,7 +1,7 @@
 import React from 'react';
-import lmsImg from '../assets/projects/lms.png';
-import cryptoAppImg from '../assets/projects/cryptoapp.png';
-import corp2Img from '../assets/projects/corporate2.png';
+// import lmsImg from '../assets/projects/lms.png';
+// import cryptoAppImg from '../assets/projects/cryptoapp.png';
+// import corp2Img from '../assets/projects/corporate2.png';
 import zitalkImg from '../assets/projects/zitalk.png';
 import radgarackImg from '../assets/projects/radgnarackHome.png';
 import naplesdentalImg from '../assets/projects/naplesdental.png';
